@@ -8,15 +8,15 @@ export const TypingMain = () => {
   const textLength = useRef(0);
   const matchText = "Believe you can and you're halfway there.";
 
-  const splitMatchText = (matchText) => {
-    const matchTextSplitted = [...matchText];
-    // console.log(matchTextSplitted[1]);
-    // console.log(matchText);
-    // for (let character of matchTextSplitted) {
-    //   console.log(character);
-    // }
-    return matchTextSplitted;
-  };
+  // const splitMatchText = (matchText) => {
+  //   const matchTextSplitted = [...matchText];
+  //   // console.log(matchTextSplitted[1]);
+  //   // console.log(matchText);
+  //   // for (let character of matchTextSplitted) {
+  //   //   console.log(character);
+  //   // }
+  //   return matchTextSplitted;
+  // };
   useEffect(() => {
     const matchTextSplitted = [...matchText];
     let dynamicTextFirstRender = [];
