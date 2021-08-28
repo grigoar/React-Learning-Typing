@@ -6,17 +6,27 @@ export const TypingMain = () => {
   const [matchingText, setMatchingText] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const textLength = useRef(0);
+  const [query, setQuery] = useState("");
+  const [status, setStatus] = useState("idle");
+  const [data, setData] = useState([]);
   const matchText = "Believe you can and you're halfway there.";
 
-  // const splitMatchText = (matchText) => {
-  //   const matchTextSplitted = [...matchText];
-  //   // console.log(matchTextSplitted[1]);
-  //   // console.log(matchText);
-  //   // for (let character of matchTextSplitted) {
-  //   //   console.log(character);
-  //   // }
-  //   return matchTextSplitted;
-  // };
+  useEffect(() => {
+    // if (!query) return;
+    const url = "https://type.fit/api/quotes";
+    const fetchData = async () => {
+      setStatus("fetching");
+      const response = await fetch(`https://type.fit/api/quotes`);
+      const data = await response.json();
+      setData(data);
+      setStatus("fetch");
+      console.log(data);
+    };
+
+    fetchData();
+  }, []);
+  // }, [query]);
+
   useEffect(() => {
     const matchTextSplitted = [...matchText];
     let dynamicTextFirstRender = [];
@@ -36,6 +46,7 @@ export const TypingMain = () => {
     // console.log("this is not working");
     // console.log(dynamicText);
     setTypedText(e.target.value);
+    console.log(data);
 
     //Using ref for maintaining the previous length
     // console.log(textLength.current);
@@ -84,22 +95,6 @@ export const TypingMain = () => {
     );
   };
 
-  const handleIndex = (e) => {
-    // e.key === "Enter"
-    //   ? console.log("enter pressed")
-    //   : console.log("something is not working");
-    // console.log(`The key pressed : ${e.keyCode}`);
-    // console.log(`The keyCode for the key pressed is: ${e.keyCode}`);
-    // e.keyCode === 8
-    //   ? setCurrentIndex(currentIndex - 1)
-    //   : console.log("yea, not working");
-    // if (e.keyCode === 16) return;
-    // e.keyCode !== 8
-    //   ? setCurrentIndex(currentIndex + 1)
-    //   : setCurrentIndex(currentIndex - 1);
-    // setCurrentIndex(currentIndex + 1);
-  };
-
   return (
     <main className="typing-main">
       <div className="typing-main__text">{matchingText}</div>
@@ -110,7 +105,6 @@ export const TypingMain = () => {
         id="typeText"
         value={typedText}
         onChange={(e) => displayTypedText(e)}
-        onKeyDown={(e) => handleIndex(e)}
       ></input>
     </main>
   );
