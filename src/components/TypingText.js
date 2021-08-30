@@ -38,12 +38,13 @@ const TypingText = (props) => {
     }
     setDynamicText(dynamicTextFirstRender);
     setMatchingText(matchText);
+    setCurrentIndex(0);
     setTypedText("");
   }, [matchText]);
 
   const displayTypedText = (e) => {
     setTypedText(e.target.value);
-
+    console.log(e.target.value);
     // console.log(data);
 
     //Using ref for maintaining the previous length
