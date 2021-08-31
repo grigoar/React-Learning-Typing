@@ -6,6 +6,10 @@ const TypingText = (props) => {
   const [dynamicText, setDynamicText] = useState([]);
   const [matchingText, setMatchingText] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [disabled, setDisabled] = useState("");
+  const isWin = useRef(false);
+  const nrWins = useRef(0);
+
   const textLength = useRef(0);
   const matchText = useContext(TextTypingContext);
   //   const matchText = "Believe you can and you're halfway there.";
@@ -40,11 +44,12 @@ const TypingText = (props) => {
     setMatchingText(matchText);
     setCurrentIndex(0);
     setTypedText("");
+    isWin.current = false;
   }, [matchText]);
 
   const displayTypedText = (e) => {
     setTypedText(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
     // console.log(data);
 
     //Using ref for maintaining the previous length
@@ -102,26 +107,43 @@ const TypingText = (props) => {
       }
     }
 
-    if (typedText.length - 1 === dynamicText.length - 1) isFinished = true;
+    if (
+      typedText.length !== 0 &&
+      typedText.length - 1 === dynamicText.length - 1
+    )
+      isFinished = true;
 
     if (isFinished) {
       if (isFinishedSuccessfully) {
+        console.log("is a win");
+        isWin.current = true;
+        nrWins.current += 1;
+        setTypedText("");
         return <div>Congratulations!!!!</div>;
       } else return <div>Please try again! Try to improve your accuracy!</div>;
     } else return null;
+  };
+
+  const setWinner = () => {
+    // setDisabled("disabled")
   };
 
   return (
     <div>
       <div className="typing-main__text">{matchingText}</div>
       <div>{checkFinishedText()}</div>
+      <div>
+        {isWin.current ? "is a win" : ""} - You have now {nrWins.current}{" "}
+        victories.
+      </div>
       <input
         className="typing-main__input"
         style={{ width: "100%" }}
         type="text"
         id="typeText"
-        value={typedText}
+        value={isWin.current ? "" : typedText}
         onChange={(e) => displayTypedText(e)}
+        disabled={isWin.current ? "disabled" : ""}
       ></input>
     </div>
   );
