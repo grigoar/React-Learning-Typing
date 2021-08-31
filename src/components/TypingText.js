@@ -92,9 +92,29 @@ const TypingText = (props) => {
     );
   };
 
+  const checkFinishedText = () => {
+    let isFinished = false;
+    let isFinishedSuccessfully = true;
+    for (const [i, letter] of dynamicText.entries()) {
+      if (letter.check !== "valid") {
+        isFinishedSuccessfully = false;
+        break;
+      }
+    }
+
+    if (typedText.length - 1 === dynamicText.length - 1) isFinished = true;
+
+    if (isFinished) {
+      if (isFinishedSuccessfully) {
+        return <div>Congratulations!!!!</div>;
+      } else return <div>Please try again! Try to improve your accuracy!</div>;
+    } else return null;
+  };
+
   return (
     <div>
       <div className="typing-main__text">{matchingText}</div>
+      <div>{checkFinishedText()}</div>
       <input
         className="typing-main__input"
         style={{ width: "100%" }}
