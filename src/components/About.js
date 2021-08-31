@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Stats = () => {
+const About = () => {
   return (
     <div>
-      <p>This is the Stats component</p>
+      <p>This is the About component</p>
       <Link to="/">Home</Link>
       <Link to="/stats">Stats</Link>
       <Link to="/about">About</Link>
     </div>
   );
 };
+
+export default About;

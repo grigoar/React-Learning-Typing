@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+
 import TypingText from "./TypingText";
+import Navbar from "./Navbar";
 
 export const TextTypingContext = React.createContext();
 
@@ -26,6 +29,7 @@ export const TypingMain = () => {
     };
 
     fetchData();
+    console.log("A call for getting the quotes was made");
   }, []);
   // }, [query]);
 
@@ -39,6 +43,7 @@ export const TypingMain = () => {
   return (
     <TextTypingContext.Provider value={matchText}>
       <main className="typing-main">
+        <Navbar></Navbar>
         <TypingText></TypingText>
         <button onClick={() => pickRandomText()}> New Quote</button>
       </main>
