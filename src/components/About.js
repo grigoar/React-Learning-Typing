@@ -4,10 +4,16 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <div>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link style={{ "margin-left": "10px" }} to="/stats">
+          Stats
+        </Link>
+        <Link style={{ "margin-left": "10px" }} to="/about">
+          About
+        </Link>
+      </nav>
       <p>This is the About component</p>
-      <Link to="/">Home</Link>
-      <Link to="/stats">Stats</Link>
-      <Link to="/about">About</Link>
     </div>
   );
 };

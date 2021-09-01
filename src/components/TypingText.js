@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TextTypingContext } from "./TypingMain";
+import { TypingWins } from "./App";
 
 const TypingText = (props) => {
   const [typedText, setTypedText] = useState("");
@@ -8,10 +9,11 @@ const TypingText = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [disabled, setDisabled] = useState("");
   const isWin = useRef(false);
-  const nrWins = useRef(0);
+  // const nrWins = useRef(0);
 
   const textLength = useRef(0);
-  const matchText = useContext(TextTypingContext);
+  const { matchText } = useContext(TextTypingContext);
+  const { wins, setWins } = useContext(TypingWins);
   //   const matchText = "Believe you can and you're halfway there.";
 
   useEffect(() => {
@@ -109,7 +111,7 @@ const TypingText = (props) => {
 
     if (
       typedText.length !== 0 &&
-      typedText.length - 1 === dynamicText.length - 1
+      typedText.length - 1 >= dynamicText.length - 1
     )
       isFinished = true;
 
@@ -117,7 +119,8 @@ const TypingText = (props) => {
       if (isFinishedSuccessfully) {
         console.log("is a win");
         isWin.current = true;
-        nrWins.current += 1;
+        // nrWins.current += 1;
+        setWins(wins + 1);
         setTypedText("");
         return <div>Congratulations!!!!</div>;
       } else return <div>Please try again! Try to improve your accuracy!</div>;
@@ -133,8 +136,7 @@ const TypingText = (props) => {
       <div className="typing-main__text">{matchingText}</div>
       <div>{checkFinishedText()}</div>
       <div>
-        {isWin.current ? "is a win" : ""} - You have now {nrWins.current}{" "}
-        victories.
+        {isWin.current ? "is a win" : ""} - You have now {wins} victories.
       </div>
       <input
         className="typing-main__input"

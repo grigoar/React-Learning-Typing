@@ -2,3 +2,10 @@
     font-size: 25px;
     margin-bottom: 20px;
 }
+
+.typing-main__text {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -5,8 +5,12 @@ const Navbar = () => {
   return (
     <div>
       <Link to="/">Home</Link>
-      <Link to="/stats">Stats</Link>
-      <Link to="/about">About</Link>
+      <Link style={{ "margin-left": "10px" }} to="/stats">
+        Stats
+      </Link>
+      <Link style={{ "margin-left": "10px" }} to="/about">
+        About
+      </Link>
     </div>
   );
 };
