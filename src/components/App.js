@@ -23,10 +23,10 @@ const App = () => {
   //   updateWins(nrWins.current);
   // };
   // const wins = nrWins.current;
-  const incrementWins = () => {
-    console.log(wins);
-    setWins(wins + 1);
-  };
+  // const incrementWins = () => {
+  //   console.log(wins);
+  //   setWins(wins + 1);
+  // };
   return (
     <div>
       <Header></Header>

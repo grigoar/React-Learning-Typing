@@ -16,6 +16,7 @@ const TypingText = (props) => {
   const textLength = useRef(0);
   const { matchText } = useContext(TextTypingContext);
   const { wins, incrementWins } = useContext(WinContext);
+  // const { wins, playerWin, setPlayerWin } = useContext(WinContext);
   //   const matchText = "Believe you can and you're halfway there.";
 
   useEffect(() => {
@@ -53,15 +54,6 @@ const TypingText = (props) => {
 
   const displayTypedText = (e) => {
     setTypedText(e.target.value);
-    // console.log(e.target.value);
-    // console.log(data);
-
-    //Using ref for maintaining the previous length
-    // console.log(textLength.current);
-    // e.target.value.length > textLength.current
-    //   ? setCurrentIndex(currentIndex + 1)
-    //   : setCurrentIndex(currentIndex - 1);
-
     setCurrentIndex(e.target.value.length);
     // console.log(textLength);
     setMatchingText(
@@ -123,6 +115,7 @@ const TypingText = (props) => {
         isWin.current = true;
         // nrWins.current += 1;
         incrementWins();
+        // setPlayerWin(!playerWin);
         setTypedText("");
         return <div>Congratulations!!!!</div>;
       } else return <div>Please try again! Try to improve your accuracy!</div>;
