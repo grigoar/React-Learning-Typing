@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export const useFetch = (url) => {
+export const useFetchQuotes = (url) => {
   const [status, setStatus] = useState("idle");
   const [data, setData] = useState([]);
   const [matchText, setMatchText] = useState("Loading...");

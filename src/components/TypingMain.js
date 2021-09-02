@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import TypingText from "./TypingText";
 import Navbar from "./Navbar";
-import { useFetch } from "./customHooks/useFetch";
+import { useFetch } from "./customHooks/useFetchQuotes";
 
 export const TextTypingContext = React.createContext();
 

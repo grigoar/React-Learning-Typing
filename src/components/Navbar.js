@@ -5,10 +5,10 @@ const Navbar = () => {
   return (
     <div>
       <Link to="/">Home</Link>
-      <Link style={{ "margin-left": "10px" }} to="/stats">
+      <Link style={{ marginLeft: "10px" }} to="/stats">
         Stats
       </Link>
-      <Link style={{ "margin-left": "10px" }} to="/about">
+      <Link style={{ marginLeft: "10px" }} to="/about">
         About
       </Link>
     </div>

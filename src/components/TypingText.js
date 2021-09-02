@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TextTypingContext } from "./TypingMain";
-import { TypingWins } from "./App";
+// import { TypingWins } from "./App";
+// import WinProvider from "./customContext/WinsProvider";
+import { WinContext } from "./customContext/WinsProvider";
 
 const TypingText = (props) => {
   const [typedText, setTypedText] = useState("");
@@ -13,7 +15,7 @@ const TypingText = (props) => {
 
   const textLength = useRef(0);
   const { matchText } = useContext(TextTypingContext);
-  const { wins, setWins } = useContext(TypingWins);
+  const { wins, incrementWins } = useContext(WinContext);
   //   const matchText = "Believe you can and you're halfway there.";
 
   useEffect(() => {
@@ -120,7 +122,7 @@ const TypingText = (props) => {
         console.log("is a win");
         isWin.current = true;
         // nrWins.current += 1;
-        setWins(wins + 1);
+        incrementWins();
         setTypedText("");
         return <div>Congratulations!!!!</div>;
       } else return <div>Please try again! Try to improve your accuracy!</div>;

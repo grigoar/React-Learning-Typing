@@ -6,23 +6,31 @@ import { Footer } from "./Footer";
 import { TypingMain } from "./TypingMain";
 import { Stats } from "./Stats";
 import About from "./About";
-import { useFetch } from "./customHooks/useFetch";
+import { useFetchQuotes } from "./customHooks/useFetchQuotes";
+import WinProvider from "./customContext/WinsProvider";
 
-export const TypingWins = React.createContext();
+// export const TypingWins = React.createContext();
 
 const App = () => {
-  const { status, data, matchText, pickRandomText } = useFetch();
-  const [wins, setWins] = useState(0);
+  const { status, data, matchText, pickRandomText } = useFetchQuotes();
+
+  // useEffect(() => {
+  //   setWins(wins);
+  // }, [wins]);
   // const nrWins = useRef(0);
   // const setWins = () => {
   //   nrWins.current += 1;
   //   updateWins(nrWins.current);
   // };
   // const wins = nrWins.current;
+  const incrementWins = () => {
+    console.log(wins);
+    setWins(wins + 1);
+  };
   return (
     <div>
       <Header></Header>
-      <TypingWins.Provider value={{ wins, setWins }}>
+      <WinProvider initialCount={0}>
         <Switch>
           <Route path="/" exact>
             <TypingMain
@@ -36,7 +44,7 @@ const App = () => {
           </Route>
           <Route path="/about" component={About}></Route>
         </Switch>
-      </TypingWins.Provider>
+      </WinProvider>
       <Footer></Footer>
     </div>
   );
