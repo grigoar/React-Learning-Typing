@@ -1,26 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
-export const WinContext = React.createContext();
+const WinContext = React.createContext();
+
+export const useContextWins = () => {
+  return useContext(WinContext);
+};
 
 const WinProvider = ({ children, initialCount = 0 }) => {
   const [wins, setWins] = useState(initialCount);
-  const [playerWin, setPlayerWin] = useState(false);
 
-  // useEffect(() => {
-  //   setWins(wins + 1);
-  // }, [playerWin]);
-
-  // useEffect(() => {
-  //   // incrementWins();
-  // }, [wins]);
   const incrementWins = () => {
     setWins(wins + 1);
   };
 
   return (
-    <WinContext.Provider
-      value={{ wins, playerWin, setPlayerWin, incrementWins }}
-    >
+    <WinContext.Provider value={{ wins, incrementWins }}>
       {children}
     </WinContext.Provider>
   );

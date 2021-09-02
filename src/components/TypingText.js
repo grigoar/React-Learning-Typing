@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { TextTypingContext } from "./TypingMain";
 // import { TypingWins } from "./App";
 // import WinProvider from "./customContext/WinsProvider";
-import { WinContext } from "./customContext/WinsProvider";
+// import { WinContext } from "./customContext/WinsProvider";
+import { useContextWins } from "./customContext/WinsProvider";
 
 const TypingText = (props) => {
   const [typedText, setTypedText] = useState("");
@@ -15,9 +16,15 @@ const TypingText = (props) => {
 
   const textLength = useRef(0);
   const { matchText } = useContext(TextTypingContext);
-  const { wins, incrementWins } = useContext(WinContext);
-  // const { wins, playerWin, setPlayerWin } = useContext(WinContext);
+  // const { wins, incrementWins } = useContext(WinContext);
+  const { wins, incrementWins } = useContextWins();
   //   const matchText = "Believe you can and you're halfway there.";
+
+  useEffect(() => {
+    if (isWin.current) {
+      incrementWins();
+    }
+  }, [isWin.current]);
 
   useEffect(() => {
     console.log(props);
@@ -114,8 +121,7 @@ const TypingText = (props) => {
         console.log("is a win");
         isWin.current = true;
         // nrWins.current += 1;
-        incrementWins();
-        // setPlayerWin(!playerWin);
+
         setTypedText("");
         return <div>Congratulations!!!!</div>;
       } else return <div>Please try again! Try to improve your accuracy!</div>;
@@ -125,7 +131,10 @@ const TypingText = (props) => {
   const setWinner = () => {
     // setDisabled("disabled")
   };
-
+  if (isWin.current) {
+    // isWin.current = false;
+    // incrementWins();
+  }
   return (
     <div>
       <div className="typing-main__text">{matchingText}</div>

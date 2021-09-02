@@ -2,9 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 // import { TypingWins } from "./App";
 // import WinProvider from "./customContext/WinsProvider";
+// import { WinContext } from "./customContext/WinsProvider";
+import { useContextWins } from "./customContext/WinsProvider";
 
 export const Stats = () => {
-  const { wins } = useContext(WinContext);
+  // const { wins } = useContext(WinContext);
+  const { wins } = useContextWins();
 
   return (
     <div>
