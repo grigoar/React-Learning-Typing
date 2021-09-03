@@ -4,7 +4,11 @@ export const Header = (props) => {
   return (
     <header className="header">
       <div className="header__logo-box">
-        <img src="img/touch-typing-logo.svg" alt="Logo" class="header__logo" />
+        <img
+          src="img/touch-typing-logo.svg"
+          alt="Logo"
+          className="header__logo"
+        />
       </div>
       <div className="header__text-box">
         <h1 className="heading-primary">

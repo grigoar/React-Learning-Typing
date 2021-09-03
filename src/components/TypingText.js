@@ -162,7 +162,7 @@ const TypingText = (props) => {
   return (
     <div>
       <div className="typing-main__text">{matchingText}</div>
-      <div>WPM now: {wpm}</div>
+      <div>WPM: {wpm}</div>
       <div>{checkFinishedText()}</div>
       <div>
         {isWin.current

@@ -7,10 +7,13 @@ export const useContextWins = () => {
 };
 
 const WinProvider = ({ children, initialCount = 0 }) => {
-  const [wins, setWins] = useState(initialCount);
+  let nrWinsSaved = localStorage.getItem("wins");
+  // localStorage.clear();
+  const [wins, setWins] = useState(nrWinsSaved ? nrWinsSaved : initialCount);
 
   const incrementWins = () => {
     setWins(wins + 1);
+    localStorage.setItem("wins", (wins + 1).toString());
   };
 
   return (
