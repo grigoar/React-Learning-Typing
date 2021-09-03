@@ -12,6 +12,8 @@ const TypingText = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timeStart, setTimeStart] = useState(0);
   const [timeDelta, setTimeDelta] = useState(0);
+  const [wpm, setWpm] = useState(0);
+  const [quoteWPM, setQuoteWPM] = useState(0);
   const isWin = useRef(false);
   // const nrWins = useRef(0);
 
@@ -21,19 +23,29 @@ const TypingText = (props) => {
   const { wins, incrementWins } = useContextWins();
   //   const matchText = "Believe you can and you're halfway there.";
 
+  //use effect to increase the number of quotes typed with 100% accuracy
   useEffect(() => {
     if (isWin.current) {
-      console.log(
-        "the time when the race is finished is: " + window.performance.now()
-      );
-      console.log(
-        "The time started when when the user start typing: " + timeStart
-      );
-      setTimeDelta(window.performance.now() - timeStart);
+      let timeDeltaNow = window.performance.now() - timeStart;
+      setTimeDelta(timeDeltaNow);
+
+      let wpmNow = (12 * dynamicText.length) / (timeDeltaNow / 1000);
+      setQuoteWPM(Math.round(wpmNow));
       incrementWins();
     }
   }, [isWin.current]);
-  // }, [isWin.current]);
+
+  //use effect to show the WPM in real time
+  useEffect(() => {
+    if (typedText.length > 3) {
+      let timeDeltaNow = window.performance.now() - timeStart;
+      setTimeDelta(timeDeltaNow);
+      //60s * nrCharacters / (timePassed * 5)
+      let wpmNow = (12 * typedText.length) / (timeDeltaNow / 1000);
+
+      setWpm(Math.round(wpmNow));
+    }
+  }, [typedText]);
 
   useEffect(() => {
     if (typedText.length === 1) {
@@ -41,8 +53,9 @@ const TypingText = (props) => {
     }
   }, [typedText]);
 
+  //for processing the quote received
   useEffect(() => {
-    console.log(props);
+    // console.log(props);
     const matchTextSplitted = [...matchText];
     let dynamicTextFirstRender = [];
     for (let [index, character] of matchTextSplitted.entries()) {
@@ -57,6 +70,7 @@ const TypingText = (props) => {
     // console.log(dynamicTextFirstRender);
   }, []);
 
+  //for initializing the new quote
   useEffect(() => {
     const matchTextSplitted = [...matchText];
     let dynamicTextFirstRender = [];
@@ -72,6 +86,7 @@ const TypingText = (props) => {
     setCurrentIndex(0);
     setTypedText("");
     setTimeStart(0);
+    setWpm(0);
     isWin.current = false;
   }, [matchText]);
 
@@ -147,10 +162,14 @@ const TypingText = (props) => {
   return (
     <div>
       <div className="typing-main__text">{matchingText}</div>
+      <div>WPM now: {wpm}</div>
       <div>{checkFinishedText()}</div>
       <div>
-        {isWin.current ? `Time spent typing this quote: ${timeDelta}` : ""}{" "}
+        {isWin.current
+          ? `Time spent typing this quote: ${Math.round(timeDelta / 1000)}s`
+          : ""}{" "}
       </div>
+      {/* <div>WPM: {quoteWPM}</div> */}
       <div>
         {isWin.current ? "Text completed with 100% accuracy." : ""} - Quotes
         completed: {wins}. *You need to complete the quote typed with 100%
