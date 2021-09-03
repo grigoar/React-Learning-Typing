@@ -1,0 +1,144 @@
+//=====================================
+//---------- COMMONS MAIN -------------
+//=====================================
+// COLOR VARIABLES
+// $color-primary: #c69963;
+// $color-primary-dark: #b28451;
+
+// $color-secondary: #101d2c;
+
+// $color-grey-light-1: #f9f7f6;
+// $color-grey-light-2: #aaa;
+
+// $color-grey-dark-1: #54483a;
+// $color-grey-dark-2: #beaf9e;
+// $color-grey-dark-3: #333;
+
+:root {
+  --color-primary: #4c40d1;
+  --color-primary-light: #b7b2ec;
+  --color-primary-dark: #352c92;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+  --line: 1px solid var(--color-grey-light-2);
+}
+
+// FONT VARIABLES
+$font-primary: "Nunito", sans-serif;
+$font-display: "Josefin Sans", sans-serif;
+
+// RESPONSIVE BREAKPOINTS
+
+$bp-largest: 75em; //1200px/16
+$bp-large: 62.5em; //1000px
+$bp-medium: 50em; //800px
+$bp-small: 37.5em; //600px
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; //10px/16px = 62.5% => 1rem = 10px
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 50%; // 1rem = 8px
+  }
+}
+
+body {
+  font-family: $font-primary;
+  color: var(--color-grey-dark-1);
+  font-weight: 300;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  height: 100vh;
+}
+
+.typing-main__text {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.typing-main__text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+//=====================================
+//---------- Main LAYOUT---------------
+//=====================================
+.container {
+  max-width: 120rem;
+  min-height: 90vh;
+  //   margin: auto auto;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.typing-main {
+  flex-grow: 1;
+  //   background-color: rgb(158, 148, 144);
+}
+
+//=====================================
+//-------- HEADER ---------------------
+//=====================================
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__logo {
+    width: 20rem;
+    height: auto;
+    margin-right: 5rem;
+  }
+}
+
+//=====================================
+//-------- FOOTER ---------------------
+//=====================================
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

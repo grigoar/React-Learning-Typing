@@ -14,21 +14,8 @@ import WinProvider from "./customContext/WinsProvider";
 const App = () => {
   const { status, data, matchText, pickRandomText } = useFetchQuotes();
 
-  // useEffect(() => {
-  //   setWins(wins);
-  // }, [wins]);
-  // const nrWins = useRef(0);
-  // const setWins = () => {
-  //   nrWins.current += 1;
-  //   updateWins(nrWins.current);
-  // };
-  // const wins = nrWins.current;
-  // const incrementWins = () => {
-  //   console.log(wins);
-  //   setWins(wins + 1);
-  // };
   return (
-    <div>
+    <div className="container">
       <Header></Header>
       <WinProvider initialCount={0}>
         <Switch>

@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <h3> © 2021 grigoar. All rights reserved.</h3>
     </footer>
   );
