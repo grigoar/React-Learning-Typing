@@ -10,7 +10,8 @@ const TypingText = (props) => {
   const [dynamicText, setDynamicText] = useState([]);
   const [matchingText, setMatchingText] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [disabled, setDisabled] = useState("");
+  const [timeStart, setTimeStart] = useState(0);
+  const [timeDelta, setTimeDelta] = useState(0);
   const isWin = useRef(false);
   // const nrWins = useRef(0);
 
@@ -22,9 +23,23 @@ const TypingText = (props) => {
 
   useEffect(() => {
     if (isWin.current) {
+      console.log(
+        "the time when the race is finished is: " + window.performance.now()
+      );
+      console.log(
+        "The time started when when the user start typing: " + timeStart
+      );
+      setTimeDelta(window.performance.now() - timeStart);
       incrementWins();
     }
   }, [isWin.current]);
+  // }, [isWin.current]);
+
+  useEffect(() => {
+    if (typedText.length === 1) {
+      setTimeStart(window.performance.now());
+    }
+  }, [typedText]);
 
   useEffect(() => {
     console.log(props);
@@ -56,6 +71,7 @@ const TypingText = (props) => {
     setMatchingText(matchText);
     setCurrentIndex(0);
     setTypedText("");
+    setTimeStart(0);
     isWin.current = false;
   }, [matchText]);
 
@@ -128,19 +144,20 @@ const TypingText = (props) => {
     } else return null;
   };
 
-  const setWinner = () => {
-    // setDisabled("disabled")
-  };
-  if (isWin.current) {
-    // isWin.current = false;
-    // incrementWins();
-  }
   return (
     <div>
       <div className="typing-main__text">{matchingText}</div>
       <div>{checkFinishedText()}</div>
       <div>
-        {isWin.current ? "is a win" : ""} - You have now {wins} victories.
+        {isWin.current ? `Time spent typing this quote: ${timeDelta}` : ""}{" "}
+      </div>
+      <div>
+        {isWin.current ? "Text completed with 100% accuracy." : ""} - Quotes
+        completed: {wins}. *You need to complete the quote typed with 100%
+        accuracy to improve your score.
+      </div>
+      <div>
+        {typedText.length === 0 && !isWin.current ? "Start typing..." : ""}
       </div>
       <input
         className="typing-main__input"
