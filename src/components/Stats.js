@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import { TypingWins } from "./App";
 // import WinProvider from "./customContext/WinsProvider";
 // import { WinContext } from "./customContext/WinsProvider";
-import { useContextWins } from "./customContext/WinsProvider";
+import { useContextWins } from "../customContext/WinsProvider";
 import Navbar from "./Navbar";
 
 export const Stats = (props) => {
@@ -21,7 +21,7 @@ export const Stats = (props) => {
         !
       </h1>
       <h2>The best quote you completed is "{bestRace.quote}".</h2>
-      <h3>You finished the race with an amazing WPM of: {bestRace.bestWPM}</h3>
+      <h3>You finished that race with an amazing WPM of: {bestRace.bestWPM}</h3>
       <button onClick={resetStats}>Reset Stats</button>
     </div>
   );

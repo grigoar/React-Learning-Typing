@@ -6,8 +6,8 @@ import { Footer } from "./Footer";
 import { TypingMain } from "./TypingMain";
 import { Stats } from "./Stats";
 import About from "./About";
-import { useFetchQuotes } from "./customHooks/useFetchQuotes";
-import WinProvider from "./customContext/WinsProvider";
+import { useFetchQuotes } from "../customHooks/useFetchQuotes";
+import WinProvider from "../customContext/WinsProvider";
 
 // export const TypingWins = React.createContext();
 

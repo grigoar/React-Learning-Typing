@@ -3,7 +3,7 @@ import { TextTypingContext } from "./TypingMain";
 // import { TypingWins } from "./App";
 // import WinProvider from "./customContext/WinsProvider";
 // import { WinContext } from "./customContext/WinsProvider";
-import { useContextWins } from "./customContext/WinsProvider";
+import { useContextWins } from "../customContext/WinsProvider";
 
 const TypingText = (props) => {
   //I should've stored the data in a more structured way using state with objects, but it is too late now :D  :))
