@@ -5,7 +5,7 @@ const TipsTouchTyping = () => {
     <div className="tips">
       <img
         className="tips__image"
-        src="img/touch-typing-tips.jpg"
+        src="img/touch-typing-tips.webp"
         alt="touch-typing-tips"
       ></img>
     </div>
