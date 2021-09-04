@@ -1,3 +1,4 @@
+@import "animations";
 //=====================================
 //---------- COMMONS MAIN -------------
 //=====================================
@@ -63,6 +64,8 @@ $bp-small: 37.5em; //600px
 html {
   box-sizing: border-box;
   font-size: 62.5%; //10px/16px = 62.5% => 1rem = 10px
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   @media only screen and (max-width: $bp-largest) {
     font-size: 50%; // 1rem = 8px
@@ -90,13 +93,38 @@ body {
   height: 100vh;
 }
 
+.red {
+  color: #ff7474;
+}
+.green {
+  color: #2ab600;
+}
+.focus-bad {
+  font-size: 2.2rem;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+}
+
+.focus-good {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.2rem;
+}
+//=====================================
+//---------- NAV BAR---------------
+//=====================================
 .navbar {
   display: flex;
   justify-content: space-around;
+
   // background-color: var(--color-grey-light-4);
 }
 .navbar > *,
-.navbar > *:visited {
+.navbar > *:visited,
+.btn,
+.btn:visited {
+  border: 1px solid var(--color-secondary-dark);
+  padding: 1rem;
   background-color: var(--color-secondary-light);
   width: 100%;
   display: flex;
@@ -104,12 +132,18 @@ body {
   justify-content: center;
   text-decoration: none;
   color: var(--color-grey-dark-1);
-  border-radius: 5px;
+  // border-radius: 5px;
+  border: 1px solid var(--color-secondary-dark);
   transition: background-color 0.3s, color 0.3s;
 }
-.navbar > *:hover {
+.navbar > *:hover,
+.btn:hover {
   background-color: var(--color-secondary-dark);
   color: var(--color-grey-light-1);
+  // border-bottom: 2px solid var(--color-grey-light-1);
+  // text-decoration: underline;
+  // text-decoration-color: var(--color-grey-light-1);
+  // text-decoration-thickness: 0.3rem;
 }
 
 .typing-main__text {
@@ -122,31 +156,6 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-//=====================================
-//---------- Main LAYOUT---------------
-//=====================================
-.container {
-  max-width: 120rem;
-  min-height: 90vh;
-  //   margin: auto auto;
-  margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-
-  background-color: var(--color-grey-light-1);
-  box-shadow: var(--shadow-dark);
-
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-.typing-main {
-  flex-grow: 1;
-  //   background-color: rgb(158, 148, 144);
 }
 
 //=====================================
@@ -165,6 +174,105 @@ body {
   }
 }
 
+.heading-primary {
+  &--main {
+    display: block;
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 2.7rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    color:var(--color-primary-dark);
+    text-align:center;
+  }
+  &--sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.8rem;
+    text-align: center;
+    // display:flex;
+    // align-items:center;
+    // justify-content:center;
+    animation: moveInRight 1s ease-out;
+    color:var(--color-primary-light);
+  }
+}
+
+//=====================================
+//---------- Main LAYOUT---------------
+//=====================================
+.container {
+  max-width: 120rem;
+  min-height: 100vh;
+  //   margin: auto auto;
+  margin: 0 auto;
+  // padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+
+  // overflow-x: hidden;
+  // overflow-y: hidden;
+}
+
+.typing-main {
+  flex-grow: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //   background-color: rgb(158, 148, 144);
+
+  &__new-quote {
+    width: fit-content;
+    border-radius: 0.5rem;
+    font-weight: 700;
+  }
+
+  &__text {
+  }
+  &__wpm {
+    color: blue;
+  }
+  &__finish {
+  }
+  &__time-spent {
+    color: blue;
+  }
+
+  &__start_typing {
+    min-height: 3rem;
+  }
+
+  &__finish-typing {
+    color: blue;
+  }
+  &__finish-accuracy {
+    color: blue;
+  }
+
+  &__input {
+    font-size:1.6rem;
+  }
+
+  &__tip {
+  }
+  &__score {
+    span {
+      color: green;
+    }
+  }
+}
+
+.tips img {
+  max-width: 300px;
+}
+
 //=====================================
 //-------- STATS PAGE -----------------
 //=====================================
@@ -176,6 +284,11 @@ body {
 //=====================================
 .about {
   flex-grow: 1;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 //=====================================
 //-------- FOOTER ---------------------

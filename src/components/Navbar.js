@@ -5,12 +5,8 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/">Typing</Link>
-      <Link style={{ marginLeft: "10px" }} to="/stats">
-        Stats
-      </Link>
-      <Link style={{ marginLeft: "10px" }} to="/about">
-        About
-      </Link>
+      <Link to="/stats">Stats</Link>
+      <Link to="/about">About</Link>
     </nav>
   );
 };

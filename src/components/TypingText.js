@@ -43,6 +43,7 @@ const TypingText = (props) => {
       //calculating the real accuracy
       let accuracyC =
         ((matchText.length - realAccuracy.errorsMade) / matchText.length) * 100;
+      if (accuracyC < 0) accuracyC = 0;
       setRealAccuracy({
         ...realAccuracy,
         accuracy: (Math.round(accuracyC * 100) / 100).toFixed(2),
@@ -172,26 +173,36 @@ const TypingText = (props) => {
         isWin.current = true;
         // nrWins.current += 1;
 
-        setTypedText("");
-        return <div>Congratulations!!!!</div>;
-      } else return <div>Please try again! Try to improve your accuracy!</div>;
+        // setTypedText("");
+        return <div className="green focus-good">Congratulations!!!!</div>;
+      } else
+        return (
+          <div className="red focus-bad">
+            Please try harder! You need 100% accuracy to finish the quote!
+          </div>
+        );
     } else return null;
   };
 
   return (
     <div>
       <div className="typing-main__text">{matchingText}</div>
-      <div>WPM: {wpm}</div>
-      <div>{checkFinishedText()}</div>
-      <div>
+      <div className="typing-main__finish_typing">{checkFinishedText()}</div>
+      <div className="typing-main__wpm">WPM: {wpm}.</div>
+      <div className="typing-main__time-spent">
         {isWin.current
-          ? `Time spent typing this quote: ${Math.round(timeDelta / 1000)}s`
+          ? `Time spent typing this quote: ${Math.round(timeDelta / 1000)}s.`
           : ""}{" "}
       </div>
       {/* <div>WPM: {quoteWPM}</div> */}
 
-      <div>
+      <div className="typing-main__start_typing">
         {typedText.length === 0 && !isWin.current ? "Start typing..." : ""}
+        <span className="typing-main__finish-accuracy">
+          {isWin.current
+            ? `Quote completed with the real accuracy of: ${realAccuracy.accuracy}%.`
+            : ""}
+        </span>
       </div>
       <input
         className="typing-main__input"
@@ -202,12 +213,12 @@ const TypingText = (props) => {
         onChange={(e) => displayTypedText(e)}
         disabled={isWin.current ? "disabled" : ""}
       ></input>
-      <div>
-        {isWin.current
-          ? `Text completed with 100% accuracy but the real accuracy is ${realAccuracy.accuracy}.`
-          : ""}{" "}
-        - Quotes completed: {wins}. *You need to complete the quote typed with
-        100% accuracy to improve your score.
+      <div className="typing-main__tip">
+        *You need to complete the quote with 100% accuracy to improve your
+        score.
+      </div>
+      <div className="typing-main__score">
+        Quotes completed: <span>{wins}</span>.
       </div>
     </div>
   );

@@ -12,10 +12,9 @@ export const Header = (props) => {
       </div>
       <div className="header__text-box">
         <h1 className="heading-primary">
-          <span className="heading-primary--main">Touch Typing </span>
-          <br></br>
+          <span className="heading-primary--main">Touch Typing</span>
           <span className="heading-primary--sub">
-            is essential in a digital era
+            is essential in the digital era
           </span>
         </h1>
 

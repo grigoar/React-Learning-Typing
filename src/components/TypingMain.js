@@ -17,21 +17,23 @@ export const TypingMain = (props) => {
           <TipsTouchTyping></TipsTouchTyping>
         </>
       );
-    return null;
+    return <></>;
   };
 
   return (
     <TextTypingContext.Provider value={{ status, matchText }}>
       <Header></Header>
       <main className="typing-main">
-        <TypingText></TypingText>
-        <button onClick={() => pickRandomText()}> New Quote</button>
         <div>
-          <button onClick={() => setShowTips(!showTips)}>
-            {!showTips ? "Show tips" : "Hide Tips"}
+          <button
+            className="btn typing-main__new-quote"
+            onClick={() => pickRandomText()}
+          >
+            {" "}
+            New Quote
           </button>
         </div>
-        <div>{displayTips()}</div>
+        <TypingText></TypingText>
       </main>
     </TextTypingContext.Provider>
   );
