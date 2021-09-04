@@ -289,6 +289,23 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &__text{
+    flex-grow:1;
+
+    p{
+      margin-top:3rem;
+      line-height:2.5rem;
+      letter-spacing:0.06rem;
+      @media only screen and (max-height: $bp-small) {
+        line-height:2.4rem;
+        letter-spacing:0.02rem;
+        margin-top:1.5rem;
+        font-size: 1.4rem;
+      }
+    }
+    
+  }
 }
 //=====================================
 //-------- FOOTER ---------------------

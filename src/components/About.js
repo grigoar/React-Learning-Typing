@@ -29,8 +29,8 @@ const About = () => {
           rediscover the correct positioning the fingers on the keyboard keys.
         </p>
         <p>
-          For more see on
-          <a href="https://en.wikipedia.org/wiki/Touch_typing">Wiki</a>
+          For more see on &nbsp;
+          <a href="https://en.wikipedia.org/wiki/Touch_typing">Wiki page</a>.
         </p>
       </div>
     </div>
