@@ -20,7 +20,7 @@
 
 :root {
   --color-primary: #4c40d1;
-  --color-primary-light: #b7b2ec;
+  --color-primary-light: #706ab1;
   --color-primary-dark: #352c92;
 
   --color-secondary: #ff4500;
@@ -341,7 +341,8 @@ body {
       margin-top: 3rem;
       line-height: 2.5rem;
       letter-spacing: 0.06rem;
-      @media only screen and (max-height: $bp-small) {
+      //instead of $bp-medium or $bp-small
+      @media only screen and (max-height: 43.75rem) {
         line-height: 2.4rem;
         letter-spacing: 0.02rem;
         margin-top: 1.5rem;

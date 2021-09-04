@@ -4,6 +4,7 @@ import TipsTouchTyping from "./TipsTouchTyping";
 const About = () => {
   return (
     <div className="about">
+      <h1>Learn more about touch typing</h1>
       <TipsTouchTyping></TipsTouchTyping>
       <div className="about__text">
         <p>

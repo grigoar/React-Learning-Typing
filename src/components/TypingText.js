@@ -190,20 +190,18 @@ const TypingText = (props) => {
       <div className="typing-main__finish_typing">{checkFinishedText()}</div>
       <div className="typing-main__wpm">WPM: {wpm}.</div>
       <div className="typing-main__time-spent">
-        {isWin.current
-          ? `Time: ${Math.round(timeDelta / 1000)}s.`
-          : ""}{" "}
+        {isWin.current ? `Time: ${Math.round(timeDelta / 1000)}s.` : ""}{" "}
       </div>
       {/* <div>WPM: {quoteWPM}</div> */}
 
-      <div className="typing-main__start_typing">
+      <label for="typedText" className="typing-main__start_typing">
         {typedText.length === 0 && !isWin.current ? "Start typing..." : ""}
         <span className="typing-main__finish-accuracy">
           {isWin.current
             ? `Quote completed with the real accuracy of: ${realAccuracy.accuracy}%.`
             : ""}
         </span>
-      </div>
+      </label>
       <input
         className="typing-main__input"
         style={{ width: "100%" }}
