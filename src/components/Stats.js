@@ -6,16 +6,25 @@ export const Stats = (props) => {
 
   return (
     <div className="stats">
-      <h1>
-        You have {wins} touch typing texts completed.{" "}
-        {wins > 0
-          ? "Congratulations"
-          : "Go try and complete typing some quotes"}
-        !
-      </h1>
-      <h2>The best quote you completed is "{bestRace.quote}".</h2>
-      <h3>You finished that race with an amazing WPM of: {bestRace.bestWPM}</h3>
-      <button onClick={resetStats}>Reset Stats</button>
+      <div className="stats--wins">
+        You completed <span className="green">{wins} </span>
+        quotes.
+        {wins > 0 ? (
+          <span className="green"> Congratulations!</span>
+        ) : (
+          <span className="red"> Go try and complete typing some quotes!</span>
+        )}
+      </div>
+      <div className="stats--best-quote">
+        The fasted typed quote is: <span>"{bestRace.quote}".</span>
+      </div>
+      <div className="stats--best-wpm">
+        You finished that quote with an amazing <span>{bestRace.bestWPM}</span>{" "}
+        WPM.
+      </div>
+      <button className="btn btn--danger stats--reset" onClick={resetStats}>
+        Reset Stats
+      </button>
     </div>
   );
 };

@@ -191,7 +191,7 @@ const TypingText = (props) => {
       <div className="typing-main__wpm">WPM: {wpm}.</div>
       <div className="typing-main__time-spent">
         {isWin.current
-          ? `Time spent typing this quote: ${Math.round(timeDelta / 1000)}s.`
+          ? `Time: ${Math.round(timeDelta / 1000)}s.`
           : ""}{" "}
       </div>
       {/* <div>WPM: {quoteWPM}</div> */}

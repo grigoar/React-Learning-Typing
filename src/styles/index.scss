@@ -36,6 +36,10 @@
   --color-grey-dark-2: #777;
   --color-grey-dark-3: #999;
 
+  --color-green: #2ab600;
+  --color-red-light: #ff7474;
+  --color-red-dark: #ff1919;
+
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
 
@@ -94,10 +98,10 @@ body {
 }
 
 .red {
-  color: #ff7474;
+  color: var(--color-red-light);
 }
 .green {
-  color: #2ab600;
+  color: var(--color-green);
 }
 .focus-bad {
   font-size: 2.2rem;
@@ -119,10 +123,10 @@ body {
 
   // background-color: var(--color-grey-light-4);
 }
-.navbar > *,
-.navbar > *:visited,
 .btn,
-.btn:visited {
+.btn:visited,
+.navbar > *,
+.navbar > *:visited {
   border: 1px solid var(--color-secondary-dark);
   padding: 1rem;
   background-color: var(--color-secondary-light);
@@ -136,8 +140,8 @@ body {
   border: 1px solid var(--color-secondary-dark);
   transition: background-color 0.3s, color 0.3s;
 }
-.navbar > *:hover,
-.btn:hover {
+.btn:hover,
+.navbar > *:hover {
   background-color: var(--color-secondary-dark);
   color: var(--color-grey-light-1);
   // border-bottom: 2px solid var(--color-grey-light-1);
@@ -147,8 +151,13 @@ body {
 }
 
 .typing-main__text {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  letter-spacing: 0.05rem;
+  font-weight: 500;
   margin-bottom: 2rem;
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 2.8rem;
+  }
 }
 
 .typing-main__text {
@@ -165,7 +174,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem;
+  padding: 3rem 3rem 0rem;
 
   &__logo {
     width: 20rem;
@@ -178,13 +187,13 @@ body {
   &--main {
     display: block;
     font-size: 4rem;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 2.7rem;
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out;
-    color:var(--color-primary-dark);
-    text-align:center;
+    color: var(--color-primary-dark);
+    text-align: center;
   }
   &--sub {
     display: block;
@@ -196,7 +205,7 @@ body {
     // align-items:center;
     // justify-content:center;
     animation: moveInRight 1s ease-out;
-    color:var(--color-primary-light);
+    color: var(--color-primary-light);
   }
 }
 
@@ -232,6 +241,7 @@ body {
     width: fit-content;
     border-radius: 0.5rem;
     font-weight: 700;
+    cursor: pointer;
   }
 
   &__text {
@@ -257,14 +267,14 @@ body {
   }
 
   &__input {
-    font-size:1.6rem;
+    font-size: 1.6rem;
   }
 
   &__tip {
   }
   &__score {
     span {
-      color: green;
+      color: var(--color-green);
     }
   }
 }
@@ -278,7 +288,41 @@ body {
 //=====================================
 .stats {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem;
+  font-size: 2.5rem;
+  letter-spacing: 0.05rem;
+
+  > * {
+    margin-bottom: 5rem;
+  }
+  &--wins {
+    font-size: 3rem;
+  }
+  &--best-quote {
+    margin-bottom: 1rem;
+    span {
+      font-weight: 900;
+    }
+  }
+  &--best-wpm {
+    span {
+      font-weight: 900;
+      color: var(--color-green);
+    }
+  }
+
+  &--reset {
+    width: fit-content;
+    background-color: var(--color-red-dark);
+    padding: 3px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
 }
+
 //=====================================
 //-------- ABOUT PAGE -----------------
 //=====================================
@@ -290,21 +334,20 @@ body {
   justify-content: center;
   align-items: center;
 
-  &__text{
-    flex-grow:1;
+  &__text {
+    flex-grow: 1;
 
-    p{
-      margin-top:3rem;
-      line-height:2.5rem;
-      letter-spacing:0.06rem;
+    p {
+      margin-top: 3rem;
+      line-height: 2.5rem;
+      letter-spacing: 0.06rem;
       @media only screen and (max-height: $bp-small) {
-        line-height:2.4rem;
-        letter-spacing:0.02rem;
-        margin-top:1.5rem;
+        line-height: 2.4rem;
+        letter-spacing: 0.02rem;
+        margin-top: 1.5rem;
         font-size: 1.4rem;
       }
     }
-    
   }
 }
 //=====================================
