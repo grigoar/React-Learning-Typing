@@ -194,23 +194,27 @@ const TypingText = (props) => {
       </div>
       {/* <div>WPM: {quoteWPM}</div> */}
 
-      <label for="typedText" className="typing-main__start_typing">
+      <div className="typing-main__start_typing">
         {typedText.length === 0 && !isWin.current ? "Start typing..." : ""}
         <span className="typing-main__finish-accuracy">
           {isWin.current
             ? `Quote completed with the real accuracy of: ${realAccuracy.accuracy}%.`
             : ""}
         </span>
+      </div>
+      <label>
+        Typed Text
+        <input
+          className="typing-main__input"
+          style={{ width: "100%" }}
+          type="text"
+          id="typeText"
+          value={isWin.current ? "" : typedText}
+          onChange={(e) => displayTypedText(e)}
+          disabled={isWin.current ? "disabled" : ""}
+        ></input>
       </label>
-      <input
-        className="typing-main__input"
-        style={{ width: "100%" }}
-        type="text"
-        id="typeText"
-        value={isWin.current ? "" : typedText}
-        onChange={(e) => displayTypedText(e)}
-        disabled={isWin.current ? "disabled" : ""}
-      ></input>
+
       <div className="typing-main__tip">
         *You need to complete the quote with 100% accuracy to improve your
         score.
