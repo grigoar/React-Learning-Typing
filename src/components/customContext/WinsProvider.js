@@ -8,9 +8,14 @@ export const useContextWins = () => {
 
 const WinProvider = ({ children, initialCount = "0" }) => {
   let nrWinsSaved = localStorage.getItem("wins");
+  let bestWPM = localStorage.getItem("bestRaceWPM");
+  let bestRaceQuote = localStorage.getItem("besetRaceQuote");
   // localStorage.clear();
   const [wins, setWins] = useState(nrWinsSaved ? nrWinsSaved : initialCount);
-  const [bestRace, setBestRace] = useState({ bestWPM: 0, quote: "" });
+  const [bestRace, setBestRace] = useState({
+    bestWPM: bestWPM ? bestWPM : "0",
+    quote: bestRaceQuote ? bestRaceQuote : "",
+  });
 
   const incrementWins = () => {
     setWins((parseInt(wins) + 1).toString());
@@ -25,9 +30,15 @@ const WinProvider = ({ children, initialCount = "0" }) => {
     localStorage.setItem("besetRaceQuote", race.quote);
   };
 
+  const resetStats = () => {
+    localStorage.clear();
+    setWins(0);
+    setBestRace({ bestWPM: "0", bestRaceQuote: "" });
+  };
+
   return (
     <WinContext.Provider
-      value={{ wins, incrementWins, bestRace, recordBestRace }}
+      value={{ wins, incrementWins, bestRace, recordBestRace, resetStats }}
     >
       {children}
     </WinContext.Provider>

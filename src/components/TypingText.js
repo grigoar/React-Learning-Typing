@@ -6,6 +6,7 @@ import { TextTypingContext } from "./TypingMain";
 import { useContextWins } from "./customContext/WinsProvider";
 
 const TypingText = (props) => {
+  //I should've stored the data in a more structured way using state with objects, but it is too late now :D  :))
   const [typedText, setTypedText] = useState("");
   const [dynamicText, setDynamicText] = useState([]);
   const [matchingText, setMatchingText] = useState([]);
@@ -14,6 +15,10 @@ const TypingText = (props) => {
   const [timeDelta, setTimeDelta] = useState(0);
   const [wpm, setWpm] = useState(0);
   const [quoteWPM, setQuoteWPM] = useState(0);
+  const [realAccuracy, setRealAccuracy] = useState({
+    accuracy: 0,
+    errorsMade: 0,
+  });
   const isWin = useRef(false);
   // const nrWins = useRef(0);
 
@@ -39,6 +44,14 @@ const TypingText = (props) => {
       if (wpmNow > bestRace.bestWPM) {
         recordBestRace({ ...bestRace, bestWPM: wpmNow, quote: matchText });
       }
+
+      //calculating the real accuracy
+      let accuracyC =
+        ((matchText.length - realAccuracy.errorsMade) / matchText.length) * 100;
+      setRealAccuracy({
+        ...realAccuracy,
+        accuracy: (Math.round(accuracyC * 100) / 100).toFixed(2),
+      });
     }
   }, [isWin.current]);
 
@@ -94,6 +107,7 @@ const TypingText = (props) => {
     setTypedText("");
     setTimeStart(0);
     setWpm(0);
+    setRealAccuracy({ accuracy: 0, errorsMade: 0 });
     isWin.current = false;
   }, [matchText]);
 
@@ -116,6 +130,10 @@ const TypingText = (props) => {
           index === currentIndex
         ) {
           letter.check = "invalid";
+          setRealAccuracy({
+            ...realAccuracy,
+            errorsMade: realAccuracy.errorsMade + 1,
+          });
         }
 
         textLength.current = e.target.value.length;
@@ -178,9 +196,11 @@ const TypingText = (props) => {
       </div>
       {/* <div>WPM: {quoteWPM}</div> */}
       <div>
-        {isWin.current ? "Text completed with 100% accuracy." : ""} - Quotes
-        completed: {wins}. *You need to complete the quote typed with 100%
-        accuracy to improve your score.
+        {isWin.current
+          ? `Text completed with 100% accuracy but the real accuracy is ${realAccuracy.accuracy}.`
+          : ""}{" "}
+        - Quotes completed: {wins}. *You need to complete the quote typed with
+        100% accuracy to improve your score.
       </div>
       <div>
         {typedText.length === 0 && !isWin.current ? "Start typing..." : ""}
