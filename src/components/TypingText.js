@@ -203,7 +203,6 @@ const TypingText = (props) => {
         </span>
       </div>
       <label>
-        Typed Text
         <input
           className="typing-main__input"
           style={{ width: "100%" }}
