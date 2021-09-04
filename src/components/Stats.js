@@ -7,7 +7,7 @@ import { useContextWins } from "./customContext/WinsProvider";
 
 export const Stats = () => {
   // const { wins } = useContext(WinContext);
-  const { wins } = useContextWins();
+  const { wins, bestRace } = useContextWins();
 
   return (
     <div>
@@ -24,7 +24,8 @@ export const Stats = () => {
         You have {wins} touch typing texts completed.{" "}
         {wins > 0 ? "Congratulations" : "Go try and finish some texts"}!
       </h1>
-      <p>This is the Stats component</p>
+      <h2>The best quote you completed is "{bestRace.quote}".</h2>
+      <h3>You finished the race with an amazing WPM of: {bestRace.bestWPM}</h3>
     </div>
   );
 };

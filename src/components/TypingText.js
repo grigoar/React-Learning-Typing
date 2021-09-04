@@ -20,7 +20,7 @@ const TypingText = (props) => {
   const textLength = useRef(0);
   const { matchText } = useContext(TextTypingContext);
   // const { wins, incrementWins } = useContext(WinContext);
-  const { wins, incrementWins } = useContextWins();
+  const { wins, incrementWins, bestRace, recordBestRace } = useContextWins();
   //   const matchText = "Believe you can and you're halfway there.";
 
   //use effect to increase the number of quotes typed with 100% accuracy
@@ -29,9 +29,16 @@ const TypingText = (props) => {
       let timeDeltaNow = window.performance.now() - timeStart;
       setTimeDelta(timeDeltaNow);
 
-      let wpmNow = (12 * dynamicText.length) / (timeDeltaNow / 1000);
-      setQuoteWPM(Math.round(wpmNow));
+      let wpmNow = Math.round(
+        (12 * dynamicText.length) / (timeDeltaNow / 1000)
+      );
+      setQuoteWPM(wpmNow);
       incrementWins();
+
+      //saving the best race of the player
+      if (wpmNow > bestRace.bestWPM) {
+        recordBestRace({ ...bestRace, bestWPM: wpmNow, quote: matchText });
+      }
     }
   }, [isWin.current]);
 
