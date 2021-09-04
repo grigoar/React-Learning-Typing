@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="container">
       <Navbar />
-      <Header></Header>
+
       <WinProvider initialCount={0}>
         <Switch>
           <Route path="/" exact>

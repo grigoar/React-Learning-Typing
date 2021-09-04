@@ -5,7 +5,7 @@ export const Stats = (props) => {
   const { wins, bestRace, resetStats } = useContextWins();
 
   return (
-    <div>
+    <div className="stats">
       <h1>
         You have {wins} touch typing texts completed.{" "}
         {wins > 0

@@ -189,13 +189,7 @@ const TypingText = (props) => {
           : ""}{" "}
       </div>
       {/* <div>WPM: {quoteWPM}</div> */}
-      <div>
-        {isWin.current
-          ? `Text completed with 100% accuracy but the real accuracy is ${realAccuracy.accuracy}.`
-          : ""}{" "}
-        - Quotes completed: {wins}. *You need to complete the quote typed with
-        100% accuracy to improve your score.
-      </div>
+
       <div>
         {typedText.length === 0 && !isWin.current ? "Start typing..." : ""}
       </div>
@@ -208,6 +202,13 @@ const TypingText = (props) => {
         onChange={(e) => displayTypedText(e)}
         disabled={isWin.current ? "disabled" : ""}
       ></input>
+      <div>
+        {isWin.current
+          ? `Text completed with 100% accuracy but the real accuracy is ${realAccuracy.accuracy}.`
+          : ""}{" "}
+        - Quotes completed: {wins}. *You need to complete the quote typed with
+        100% accuracy to improve your score.
+      </div>
     </div>
   );
 };
