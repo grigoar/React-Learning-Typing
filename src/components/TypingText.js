@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TextTypingContext } from "./TypingMain";
-// import { TypingWins } from "./App";
-// import WinProvider from "./customContext/WinsProvider";
-// import { WinContext } from "./customContext/WinsProvider";
 import { useContextWins } from "../customContext/WinsProvider";
 
 const TypingText = (props) => {
@@ -20,11 +17,9 @@ const TypingText = (props) => {
     errorsMade: 0,
   });
   const isWin = useRef(false);
-  // const nrWins = useRef(0);
 
   const textLength = useRef(0);
   const { matchText } = useContext(TextTypingContext);
-  // const { wins, incrementWins } = useContext(WinContext);
   const { wins, incrementWins, bestRace, recordBestRace } = useContextWins();
   //   const matchText = "Believe you can and you're halfway there.";
 
@@ -75,7 +70,6 @@ const TypingText = (props) => {
 
   //for processing the quote received
   useEffect(() => {
-    // console.log(props);
     const matchTextSplitted = [...matchText];
     let dynamicTextFirstRender = [];
     for (let [index, character] of matchTextSplitted.entries()) {

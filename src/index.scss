@@ -14,10 +14,17 @@
 // $color-grey-dark-2: #beaf9e;
 // $color-grey-dark-3: #333;
 
+//#e67e22;
+//#c55f06;
+
 :root {
   --color-primary: #4c40d1;
   --color-primary-light: #b7b2ec;
   --color-primary-dark: #352c92;
+
+  --color-secondary: #ff4500;
+  --color-secondary-light: #ffa27f;
+  --color-secondary-dark: #661b00;
 
   --color-grey-light-1: #faf9f9;
   --color-grey-light-2: #f4f2f2;
@@ -65,6 +72,7 @@ html {
 body {
   font-family: $font-primary;
   color: var(--color-grey-dark-1);
+  font-size: 1.6rem;
   font-weight: 300;
   line-height: 1.6;
   display: flex;
@@ -80,6 +88,28 @@ body {
   background-repeat: no-repeat;
 
   height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  // background-color: var(--color-grey-light-4);
+}
+.navbar > *,
+.navbar > *:visited {
+  background-color: var(--color-secondary-light);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--color-grey-dark-1);
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.navbar > *:hover {
+  background-color: var(--color-secondary-dark);
+  color: var(--color-grey-light-1);
 }
 
 .typing-main__text {

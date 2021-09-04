@@ -8,6 +8,7 @@ import { Stats } from "./Stats";
 import About from "./About";
 import { useFetchQuotes } from "../customHooks/useFetchQuotes";
 import WinProvider from "../customContext/WinsProvider";
+import Navbar from "./Navbar";
 
 // export const TypingWins = React.createContext();
 
@@ -16,6 +17,7 @@ const App = () => {
 
   return (
     <div className="container">
+      <Navbar />
       <Header></Header>
       <WinProvider initialCount={0}>
         <Switch>

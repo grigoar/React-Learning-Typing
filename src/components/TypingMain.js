@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import TypingText from "./TypingText";
-import Navbar from "./Navbar";
 import TipsTouchTyping from "./TipsTouchTyping";
 
 export const TextTypingContext = React.createContext();
@@ -24,7 +22,6 @@ export const TypingMain = (props) => {
   return (
     <TextTypingContext.Provider value={{ status, matchText }}>
       <main className="typing-main">
-        <Navbar></Navbar>
         <TypingText></TypingText>
         <button onClick={() => pickRandomText()}> New Quote</button>
         <div>

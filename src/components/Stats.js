@@ -1,18 +1,11 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-// import { TypingWins } from "./App";
-// import WinProvider from "./customContext/WinsProvider";
-// import { WinContext } from "./customContext/WinsProvider";
+import React from "react";
 import { useContextWins } from "../customContext/WinsProvider";
-import Navbar from "./Navbar";
 
 export const Stats = (props) => {
-  // const { wins } = useContext(WinContext);
   const { wins, bestRace, resetStats } = useContextWins();
 
   return (
     <div>
-      <Navbar />
       <h1>
         You have {wins} touch typing texts completed.{" "}
         {wins > 0

@@ -1,11 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
 
 const About = () => {
   return (
     <div>
-      <Navbar />
       <p>
         Touch typing (also called touch type, blind typing, or touch
         keyboarding) is a style of typing. Although the phrase refers to typing
