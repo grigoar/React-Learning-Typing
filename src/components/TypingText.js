@@ -42,7 +42,7 @@ const TypingText = (props) => {
 
       //calculating the real accuracy
       let accuracyC =
-        ((matchText.length - realAccuracy.errorsMade) / matchText.length) * 100;
+        (matchText.length / (matchText.length + realAccuracy.errorsMade)) * 100;
       if (accuracyC < 0) accuracyC = 0;
       setRealAccuracy({
         ...realAccuracy,
