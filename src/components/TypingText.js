@@ -12,6 +12,7 @@ const TypingText = (props) => {
   const [timeDelta, setTimeDelta] = useState(0);
   const [wpm, setWpm] = useState(0);
   const [quoteWPM, setQuoteWPM] = useState(0);
+  const [started, setStarted] = useState(false);
   const [realAccuracy, setRealAccuracy] = useState({
     accuracy: 0,
     errorsMade: 0,
@@ -26,6 +27,7 @@ const TypingText = (props) => {
   //use effect to increase the number of quotes typed with 100% accuracy
   useEffect(() => {
     if (isWin.current) {
+      setStarted(false);
       let timeDeltaNow = window.performance.now() - timeStart;
       setTimeDelta(timeDeltaNow);
 
@@ -64,7 +66,8 @@ const TypingText = (props) => {
   }, [typedText]);
 
   useEffect(() => {
-    if (typedText.length === 1) {
+    if (typedText.length === 1 && !started) {
+      setStarted(true);
       setTimeStart(window.performance.now());
     }
   }, [typedText]);
