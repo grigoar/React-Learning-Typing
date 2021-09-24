@@ -2,4 +2,4 @@
 
 ## Live on netlify -> https://touch-typing-demo.netlify.app/
 
-### I am using this application to learn hooks, redux with hooks, router and many more
+### I developed this application to learn hooks, react context, router and many more.
