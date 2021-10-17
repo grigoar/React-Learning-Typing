@@ -85,8 +85,12 @@ const TypingText = (props) => {
     }
     setDynamicText(dynamicTextFirstRender);
     setMatchingText(matchText);
+    setWpm(0);
+    setTimeStart(0);
+    setTimeDelta(0);
+    setStarted(false);
     // console.log(dynamicTextFirstRender);
-  }, []);
+  }, [matchText]);
 
   //for initializing the new quote
   useEffect(() => {
